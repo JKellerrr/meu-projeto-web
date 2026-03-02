@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OI</title>
+    <title>Keller</title>
 </head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <body>
@@ -40,6 +40,14 @@
                 <div class="card-body">
                     <h5 class="card-title">Torresmo ao molho conhaque</h5>
                     <p class="card-text">Torresmos sequinhos e delicionos embebedados em molho de conhaque.</p>
+                    <div class="mb-3">
+                        <input type="checkbox" class="form-check-input item-produto" value="50.00" id="produto1">
+                        <label class="form-check-label" for="produto1">Adicionar ao orçamento</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="qtd1" class="form-label">Quantidade:</label>
+                        <input type="number" class="form-control qtd-produto" id="qtd1" value="1" min="1">
+                    </div>
                     <a href="#" class="btn btn-primary">Comprar</a>
                 </div>
             </div>
@@ -51,6 +59,14 @@
                 <div class="card-body">
                     <h5 class="card-title">Mondongo ao molho branco</h5>
                     <p class="card-text">Mondongo ao molho branco com tempero especial.</p>
+                    <div class="mb-3">
+                        <input type="checkbox" class="form-check-input item-produto" value="45.00" id="produto2">
+                        <label class="form-check-label" for="produto2">Adicionar ao orçamento</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="qtd2" class="form-label">Quantidade:</label>
+                        <input type="number" class="form-control qtd-produto" id="qtd2" value="1" min="1">
+                    </div>
                     <a href="#" class="btn btn-primary">Comprar</a>
                 </div>
             </div>
@@ -62,11 +78,24 @@
                 <div class="card-body">
                     <h5 class="card-title">Rollmops</h5>
                     <p class="card-text">Rollmops tradicionais com tempero especial.</p>
+                    <div class="mb-3">
+                        <input type="checkbox" class="form-check-input item-produto" value="35.00" id="produto3">
+                        <label class="form-check-label" for="produto3">Adicionar ao orçamento</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="qtd3" class="form-label">Quantidade:</label>
+                        <input type="number" class="form-control qtd-produto" id="qtd3" value="1" min="1">
+                    </div>
                     <a href="#" class="btn btn-primary">Comprar</a>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="alert alert-info text-center mt-5" role="alert">
+        <h3 class="mb-0">Valor Total: R$ <span id="valor-total">0,00</span></h3>
+    </div>
+</div>
 
 </body>
 </html>

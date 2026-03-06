@@ -67,6 +67,9 @@
           <a class="nav-link" href="produtos.html">Produtos</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="carrinho.html">🛒 Carrinho</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="contatos.html">Contatos</a>
         </li>
       </ul>
@@ -89,7 +92,7 @@
                         <label for="qtd1" class="form-label">Quantidade:</label>
                         <input type="number" class="form-control qtd-produto" id="qtd1" value="1" min="1">
                     </div>
-                    <a href="#" class="btn btn-primary btn-sm">Comprar</a>
+                    <button class="btn btn-primary btn-sm" onclick="adicionarAoCarrinho('produto1', 'Torresmo ao molho conhaque', 50.00)">Adicionar ao Carrinho</button>
                 </div>
             </div>
         </div>
@@ -108,7 +111,7 @@
                         <label for="qtd2" class="form-label">Quantidade:</label>
                         <input type="number" class="form-control qtd-produto" id="qtd2" value="1" min="1">
                     </div>
-                    <a href="#" class="btn btn-primary btn-sm">Comprar</a>
+                    <button class="btn btn-primary btn-sm" onclick="adicionarAoCarrinho('produto2', 'Mondongo ao molho branco', 45.00)">Adicionar ao Carrinho</button>
                 </div>
             </div>
         </div>
@@ -127,7 +130,7 @@
                         <label for="qtd3" class="form-label">Quantidade:</label>
                         <input type="number" class="form-control qtd-produto" id="qtd3" value="1" min="1">
                     </div>
-                    <a href="#" class="btn btn-primary btn-sm">Comprar</a>
+                    <button class="btn btn-primary btn-sm" onclick="adicionarAoCarrinho('produto3', 'Rollmops', 35.00)">Adicionar ao Carrinho</button>
                 </div>
             </div>
         </div>
@@ -135,6 +138,10 @@
 
     <div class="alert alert-info text-center" role="alert">
         <h3 class="mb-0">Valor Total: R$ <span id="valor-total">0,00</span></h3>
+    </div>
+    
+    <div class="text-center mt-4">
+        <a href="carrinho.html" class="btn btn-success btn-lg">🛒 Ir para o Carrinho</a>
     </div>
 </div>
 

@@ -1,3 +1,26 @@
+// Função para gerenciar o carrinho de compras
+function adicionarAoCarrinho(produtoId, nomeProduto, preco) {
+    const carrinhoJSON = localStorage.getItem('carrinho');
+    let carrinho = carrinhoJSON ? JSON.parse(carrinhoJSON) : {};
+    
+    const qtdInput = document.getElementById('qtd' + produtoId.replace('produto', ''));
+    const quantidade = parseInt(qtdInput.value) || 1;
+    
+    if (carrinho[produtoId]) {
+        carrinho[produtoId].quantidade += quantidade;
+    } else {
+        carrinho[produtoId] = {
+            nome: nomeProduto,
+            preco: preco,
+            quantidade: quantidade
+        };
+    }
+    
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    
+    alert(`${nomeProduto} (x${quantidade}) adicionado ao carrinho!`);
+}
+
 function calcularTotal() {
     // Seleciona todos os checkboxes dos produtos
     const checkboxes = document.querySelectorAll('.item-produto');
@@ -53,17 +76,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Calcula o total inicial
-    calcularTotal();
-});
-
-eventListener('DOMContentLoaded', function() {
-    const checkboxes = document.querySelectorAll('.item-produto');
-    const qtdInputs = document.querySelectorAll('.qtd-produto');    
-    checkboxes.forEach((checkbox) => {
-        checkbox.addEventListener('change', calcularTotal);
-    });
-    qtdInputs.forEach((input) => {
-        input.addEventListener('input', calcularTotal);
-    }); 
     calcularTotal();
 });

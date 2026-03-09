@@ -53,30 +53,39 @@ function calcularTotal() {
     // Seleciona o elemento onde o total será exibido
     const valorTotalElement = document.getElementById('valor-total');
     
-    // Atualiza o texto com o valor calculado formatado para moeda brasileira
-    valorTotalElement.textContent = total.toLocaleString('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
-    }).replace('R$', '').trim();
+    // Atualiza o texto com o valor calculado formatado para moeda brasileira (se o elemento existir)
+    if (valorTotalElement) {
+        valorTotalElement.textContent = total.toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        }).replace('R$', '').trim();
+    }
 }
 
 // Função assíncrona para carregar depoimentos da API
 async function carregarDepoimentos() {
+    console.log('🔄 Iniciando carregamento de depoimentos...');
     try {
         const response = await fetch('https://jsonplaceholder.typicode.com/comments?_limit=3');
+        
+        console.log('📡 Resposta recebida:', response.status);
         
         if (!response.ok) {
             throw new Error(`Erro ao carregar depoimentos: ${response.status}`);
         }
         
         const depoimentos = await response.json();
+        console.log('✅ Dados recebidos:', depoimentos);
+        
         const listaDepoimentos = document.getElementById('lista-depoimentos');
+        console.log('📍 Elemento encontrado:', listaDepoimentos);
         
         if (listaDepoimentos) {
             listaDepoimentos.innerHTML = '';
             
             // Laço de repetição para cada depoimento
-            depoimentos.forEach((depoimento) => {
+            depoimentos.forEach((depoimento, index) => {
+                console.log(`📝 Renderizando depoimento ${index + 1}:`, depoimento.name);
                 const card = `
                     <div class="col-md-4 mb-3">
                         <div class="card h-100">
@@ -90,15 +99,17 @@ async function carregarDepoimentos() {
                 `;
                 listaDepoimentos.innerHTML += card;
             });
+            
+            console.log(`✅ ${depoimentos.length} depoimentos renderizados com sucesso!`);
+        } else {
+            console.error('❌ Elemento com ID "lista-depoimentos" não encontrado!');
         }
-        
-        console.log('✅ Depoimentos carregados com sucesso:', depoimentos);
         
     } catch (erro) {
         console.error('❌ Erro ao carregar depoimentos:', erro);
         const listaDepoimentos = document.getElementById('lista-depoimentos');
         if (listaDepoimentos) {
-            listaDepoimentos.innerHTML = '<p class="alert alert-danger">Erro ao carregar depoimentos</p>';
+            listaDepoimentos.innerHTML = '<div class="alert alert-warning">⚠️ Erro ao carregar depoimentos. Verifique a conexão de internet.</div>';
         }
     }
 }

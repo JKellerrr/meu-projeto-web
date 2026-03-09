@@ -60,6 +60,49 @@ function calcularTotal() {
     }).replace('R$', '').trim();
 }
 
+// Função assíncrona para carregar depoimentos da API
+async function carregarDepoimentos() {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/comments?_limit=3');
+        
+        if (!response.ok) {
+            throw new Error(`Erro ao carregar depoimentos: ${response.status}`);
+        }
+        
+        const depoimentos = await response.json();
+        const listaDepoimentos = document.getElementById('lista-depoimentos');
+        
+        if (listaDepoimentos) {
+            listaDepoimentos.innerHTML = '';
+            
+            // Laço de repetição para cada depoimento
+            depoimentos.forEach((depoimento) => {
+                const card = `
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">${depoimento.name}</h5>
+                                <p class="card-text">${depoimento.body}</p>
+                                <small class="text-muted">📧 ${depoimento.email}</small>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                listaDepoimentos.innerHTML += card;
+            });
+        }
+        
+        console.log('✅ Depoimentos carregados com sucesso:', depoimentos);
+        
+    } catch (erro) {
+        console.error('❌ Erro ao carregar depoimentos:', erro);
+        const listaDepoimentos = document.getElementById('lista-depoimentos');
+        if (listaDepoimentos) {
+            listaDepoimentos.innerHTML = '<p class="alert alert-danger">Erro ao carregar depoimentos</p>';
+        }
+    }
+}
+
 // Adiciona listeners aos checkboxes e inputs para recalcular quando mudarem
 document.addEventListener('DOMContentLoaded', function() {
     const checkboxes = document.querySelectorAll('.item-produto');
@@ -77,4 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Calcula o total inicial
     calcularTotal();
+    
+    // Carrega os depoimentos quando a página carrega
+    carregarDepoimentos();
 });

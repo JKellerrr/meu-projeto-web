@@ -56,10 +56,16 @@ const server = http.createServer((req, res) => {
     }
 
     // SERVIR ARQUIVOS ESTÁTICOS
-    let filePath = req.url === '/' ? '/index.html' : req.url;
+    let filePath = req.url === '/' ? '/pages/index.html' : req.url;
+    if (filePath === '/index.html') {
+        filePath = '/pages/index.html';
+    }
     
     // Remove query string
     filePath = filePath.split('?')[0];
+    
+    // Remove barra inicial para evitar problemas com path.join no Windows
+    filePath = filePath.replace(/^\/+/, '');
     
     // Monta caminho completo
     filePath = path.join(__dirname, filePath);

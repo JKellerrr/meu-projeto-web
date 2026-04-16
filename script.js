@@ -62,6 +62,40 @@ function calcularTotal() {
     }
 }
 
+function atualizarBotaoTema(tema) {
+    const botao = document.getElementById('theme-toggle');
+    if (!botao) {
+        return;
+    }
+
+    if (tema === 'dark') {
+        botao.textContent = '☀️';
+        botao.title = 'Ativar modo claro';
+        botao.classList.remove('btn-outline-secondary');
+        botao.classList.add('btn-outline-light');
+    } else {
+        botao.textContent = '🌙';
+        botao.title = 'Ativar modo escuro';
+        botao.classList.remove('btn-outline-light');
+        botao.classList.add('btn-outline-secondary');
+    }
+}
+
+function aplicarTema(tema) {
+    const temaSalvo = localStorage.getItem('theme');
+    const temaAtual = tema || temaSalvo || 'light';
+    const temaFinal = temaAtual === 'dark' ? 'dark' : 'light';
+    document.documentElement.dataset.theme = temaFinal;
+    localStorage.setItem('theme', temaFinal);
+    atualizarBotaoTema(temaFinal);
+}
+
+function alternarTema() {
+    const temaAtual = document.documentElement.dataset.theme || localStorage.getItem('theme') || 'light';
+    const proximoTema = temaAtual === 'dark' ? 'light' : 'dark';
+    aplicarTema(proximoTema);
+}
+
 // Função assíncrona para carregar depoimentos da API
 async function carregarDepoimentos() {
     console.log('🔄 Iniciando carregamento de depoimentos...');
@@ -131,6 +165,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Calcula o total inicial
     calcularTotal();
+
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', alternarTema);
+    }
+
+    // Aplica o tema salvo ou padrão
+    aplicarTema();
     
     // Carrega os depoimentos quando a página carrega
     carregarDepoimentos();

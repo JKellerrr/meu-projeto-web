@@ -6,54 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keller</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <style>
-        body {
-            padding-bottom: 20px;
-        }
-        h1 {
-            font-size: 1.75rem;
-            margin-top: 1rem !important;
-        }
-        .card {
-            height: 100%;
-        }
-        .card-img-top {
-            height: 180px;
-            object-fit: cover;
-        }
-        .card-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-        }
-        .card-text {
-            font-size: 0.85rem;
-        }
-        .alert {
-            margin-top: 2rem !important;
-            margin-bottom: 0;
-        }
-        .alert h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0;
-        }
-        .btn-primary {
-            font-size: 0.85rem;
-            padding: 0.4rem 0.8rem;
-        }
-        .form-label {
-            font-size: 0.85rem;
-            margin-bottom: 0.25rem;
-        }
-        .form-control, .form-check-input {
-            font-size: 0.85rem;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container-fluid">
         <h1 class="text-center text-primary">Lançamento Oficial</h1>
     </div>
-    <nav class="navbar bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -67,12 +26,13 @@
           <a class="nav-link" href="produtos.html">Produtos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="carrinho.html">🛒 Carrinho</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="contatos.html">Contatos</a>
         </li>
       </ul>
+    </div>
+    <div class="d-flex align-items-center ms-auto theme-controls">
+      <button id="theme-toggle" type="button" class="btn btn-outline-secondary btn-sm px-2 py-1" aria-label="Alternar tema" style="font-size: 0.8rem;">🌙</button>
+      <a href="carrinho.html" class="btn btn-link btn-sm text-muted p-1 ms-2" aria-label="Carrinho">🛒</a>
     </div>
   </div>
 </nav>

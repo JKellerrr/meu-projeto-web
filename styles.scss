@@ -1,0 +1,252 @@
+@use "sass:map";
+
+$font-family-base: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+$font-style-normal: normal;
+$font-style-italic: italic;
+$font-weight-regular: 400;
+$font-weight-strong: 600;
+$font-color-base: #212529;
+$font-color-muted: #6c757d;
+$font-color-light: #f8f9fa;
+
+$themes: (
+  default: (
+    body-bg: #ffffff,
+    body-color: $font-color-base,
+    card-bg: #ffffff,
+    nav-bg: #f8f9fa,
+    input-bg: #ffffff,
+    input-color: $font-color-base,
+    border: rgba(0, 0, 0, 0.15),
+    primary: #0d6efd,
+    secondary: #198754,
+    accent: #6610f2,
+    button-bg: #ffffff,
+    button-color: $font-color-base,
+    muted: $font-color-muted
+  ),
+  ocean: (
+    body-bg: #e8f7ff,
+    body-color: #053d66,
+    card-bg: #dbeeff,
+    nav-bg: #0096c7,
+    input-bg: #ffffff,
+    input-color: #053d66,
+    border: rgba(5, 61, 102, 0.2),
+    primary: #0077b6,
+    secondary: #00b4d8,
+    accent: #90e0ef,
+    button-bg: #ffffff,
+    button-color: #053d66,
+    muted: #4f6f8a
+  ),
+  sunset: (
+    body-bg: #fff2e6,
+    body-color: #5a2a19,
+    card-bg: #ffe3c2,
+    nav-bg: #ff7f50,
+    input-bg: #ffffff,
+    input-color: #5a2a19,
+    border: rgba(90, 42, 25, 0.2),
+    primary: #d87f45,
+    secondary: #b34726,
+    accent: #ffb347,
+    button-bg: #ffffff,
+    button-color: #5a2a19,
+    muted: #7e5b4a
+  ),
+  dark: (
+    body-bg: #121212,
+    body-color: #e9ecef,
+    card-bg: #1f1f1f,
+    nav-bg: #212529,
+    input-bg: #2b2b2b,
+    input-color: #e9ecef,
+    border: rgba(255, 255, 255, 0.15),
+    primary: #66c7ff,
+    secondary: #8bd18b,
+    accent: #f8c471,
+    button-bg: #2b2b2b,
+    button-color: #e9ecef,
+    muted: #b3b3b3
+  )
+);
+
+@mixin typography($weight: $font-weight-regular, $color: $font-color-base, $style: $font-style-normal) {
+  font-family: $font-family-base;
+  font-style: $style;
+  font-weight: $weight;
+  color: $color;
+}
+
+@mixin theme-variables($theme) {
+  --body-bg: #{map.get($theme, body-bg)};
+  --body-color: #{map.get($theme, body-color)};
+  --card-bg: #{map.get($theme, card-bg)};
+  --nav-bg: #{map.get($theme, nav-bg)};
+  --input-bg: #{map.get($theme, input-bg)};
+  --input-color: #{map.get($theme, input-color)};
+  --border-color: #{map.get($theme, border)};
+  --primary-color: #{map.get($theme, primary)};
+  --secondary-color: #{map.get($theme, secondary)};
+  --accent-color: #{map.get($theme, accent)};
+  --button-bg: #{map.get($theme, button-bg)};
+  --button-color: #{map.get($theme, button-color)};
+  --muted-color: #{map.get($theme, muted)};
+}
+
+:root {
+  @include theme-variables(map.get($themes, default));
+}
+
+[data-theme="light"] {
+  @include theme-variables(map.get($themes, default));
+}
+
+@each $name, $theme in $themes {
+  [data-theme="#{$name}"] {
+    @include theme-variables($theme);
+  }
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  @include typography($font-weight-regular, var(--body-color), $font-style-normal);
+  background-color: var(--body-bg);
+  min-height: 100vh;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+body, button, input, select, textarea {
+  font-family: $font-family-base;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @include typography($font-weight-strong, var(--body-color));
+}
+
+p, label, .form-text, small {
+  @include typography($font-weight-regular, var(--muted-color));
+}
+
+.navbar {
+  background-color: var(--nav-bg) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand {
+  color: var(--body-color) !important;
+}
+
+.navbar .nav-link.active {
+  font-weight: $font-weight-strong;
+}
+
+.card,
+.alert,
+.resumo-carrinho,
+.form-control,
+.form-select,
+.form-check-input,
+.table {
+  background-color: var(--card-bg) !important;
+  color: var(--body-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+.form-control,
+.form-select,
+.form-check-input {
+  background-color: var(--input-bg) !important;
+  color: var(--input-color) !important;
+}
+
+.btn-outline-secondary,
+.btn-outline-light {
+  background-color: var(--button-bg) !important;
+  color: var(--button-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-light:hover {
+  background-color: rgba(255,255,255,0.12) !important;
+}
+
+.btn-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.btn-success {
+  background-color: var(--secondary-color) !important;
+  border-color: var(--secondary-color) !important;
+}
+
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.text-muted {
+  color: var(--muted-color) !important;
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.container,
+.container-fluid {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.card {
+  border-radius: 0.75rem;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.06);
+}
+
+.alert {
+  border-radius: 0.75rem;
+}
+
+.btn-link {
+  color: var(--body-color) !important;
+  text-decoration: none !important;
+}
+
+.btn-link:hover {
+  color: var(--primary-color) !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.theme-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .theme-controls {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .form-select {
+    width: 100% !important;
+  }
+
+  .navbar .navbar-collapse {
+    margin-top: 0.5rem;
+  }
+}

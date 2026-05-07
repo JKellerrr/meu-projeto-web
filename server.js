@@ -215,7 +215,7 @@ function handleApiRequest(req, res) {
                     mensagem: 'Produto adicionado ao carrinho',
                     dados: carrinosGlobais[carritoId]
                 }));
-            } catch (erro) {
+            } catch {
                 res.statusCode = 400;
                 res.setHeader('Content-Type', 'application/json');
                 res.end(JSON.stringify({

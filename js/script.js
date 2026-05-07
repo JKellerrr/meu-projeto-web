@@ -1,4 +1,5 @@
 // Função para gerenciar o carrinho de compras
+// eslint-disable-next-line no-unused-vars
 function adicionarAoCarrinho(produtoId, nomeProduto, preco) {
     const carrinhoJSON = localStorage.getItem('carrinho');
     let carrinho = carrinhoJSON ? JSON.parse(carrinhoJSON) : {};

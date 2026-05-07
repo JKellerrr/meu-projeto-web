@@ -4,10 +4,13 @@
   "private": true,
   "scripts": {
     "build:css": "sass css/styles.scss css/styles.css --no-source-map",
-    "start": "node server.js"
+    "start": "node server.js",
+    "lint": "eslint ."
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "eslint": "^10.3.0",
+    "globals": "^17.6.0",
     "sass": "^1.99.0"
   },
   "description": "",
@@ -36,4 +39,6 @@
     "url": "https://github.com/JKellerrr/meu-projeto-web/issues"
   },
   "homepage": "https://github.com/JKellerrr/meu-projeto-web#readme"
+  
 }
+

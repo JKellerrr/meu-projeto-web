@@ -34,6 +34,7 @@ function removerDoCarrinho(produtoId) {
 }
 
 // Função para atualizar quantidade
+// eslint-disable-next-line no-unused-vars
 function atualizarQuantidade(produtoId, novaQuantidade) {
     if (novaQuantidade < 1) {
         removerDoCarrinho(produtoId);
@@ -166,6 +167,7 @@ function exibirCarrinho() {
 }
 
 // Função para efetivar a compra
+// eslint-disable-next-line no-unused-vars
 function efetivarCompra() {
     const carrinho = carregarCarrinho();
     

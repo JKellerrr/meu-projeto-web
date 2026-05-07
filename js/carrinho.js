@@ -1,28 +1,28 @@
 // Produtos disponíveis
 const produtos = {
   produto1: {
-    nome: "Torresmo ao molho conhaque",
+    nome: 'Torresmo ao molho conhaque',
     preco: 50.0,
   },
   produto2: {
-    nome: "Mondongo ao molho branco",
+    nome: 'Mondongo ao molho branco',
     preco: 45.0,
   },
   produto3: {
-    nome: "Rollmops",
+    nome: 'Rollmops',
     preco: 35.0,
   },
 };
 
 // Função para carregar o carrinho
 function carregarCarrinho() {
-  const carrinhoJSON = localStorage.getItem("carrinho");
+  const carrinhoJSON = localStorage.getItem('carrinho');
   return carrinhoJSON ? JSON.parse(carrinhoJSON) : {};
 }
 
 // Função para salvar o carrinho
 function salvarCarrinho(carrinho) {
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+  localStorage.setItem('carrinho', JSON.stringify(carrinho));
 }
 
 // Função para remover item do carrinho
@@ -65,7 +65,7 @@ function calcularTotal(carrinho) {
 // Função para exibir o carrinho
 function exibirCarrinho() {
   const carrinho = carregarCarrinho();
-  const container = document.getElementById("carrinho-content");
+  const container = document.getElementById('carrinho-content');
 
   if (Object.keys(carrinho).length === 0) {
     container.innerHTML = `
@@ -98,13 +98,13 @@ function exibirCarrinho() {
 
     if (produto) {
       const subtotal = produto.preco * item.quantidade;
-      const precoFormatado = produto.preco.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL",
+      const precoFormatado = produto.preco.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
       });
-      const subtotalFormatado = subtotal.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL",
+      const subtotalFormatado = subtotal.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
       });
 
       html += `
@@ -128,9 +128,9 @@ function exibirCarrinho() {
   }
 
   const total = calcularTotal(carrinho);
-  const totalFormatado = total.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
+  const totalFormatado = total.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
   });
 
   html += `
@@ -172,18 +172,18 @@ function efetivarCompra() {
   const carrinho = carregarCarrinho();
 
   if (Object.keys(carrinho).length === 0) {
-    alert("Seu carrinho está vazio!");
+    alert('Seu carrinho está vazio!');
     return;
   }
 
   const total = calcularTotal(carrinho);
-  const totalFormatado = total.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
+  const totalFormatado = total.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
   });
 
-  let resumo = "RESUMO DA COMPRA\n\n";
-  resumo += "===================\n";
+  let resumo = 'RESUMO DA COMPRA\n\n';
+  resumo += '===================\n';
 
   for (const produtoId in carrinho) {
     const item = carrinho[produtoId];
@@ -191,11 +191,11 @@ function efetivarCompra() {
 
     if (produto) {
       const subtotal = (produto.preco * item.quantidade).toLocaleString(
-        "pt-BR",
+        'pt-BR',
         {
-          style: "currency",
-          currency: "BRL",
-        },
+          style: 'currency',
+          currency: 'BRL',
+        }
       );
       resumo += `${produto.nome}\n`;
       resumo += `Quantidade: ${item.quantidade}\n`;
@@ -203,24 +203,24 @@ function efetivarCompra() {
     }
   }
 
-  resumo += "===================\n";
+  resumo += '===================\n';
   resumo += `TOTAL: ${totalFormatado}\n`;
-  resumo += "===================\n\n";
-  resumo += "Compra efetuada com sucesso!\n";
-  resumo += "Obrigado por sua compra!";
+  resumo += '===================\n\n';
+  resumo += 'Compra efetuada com sucesso!\n';
+  resumo += 'Obrigado por sua compra!';
 
   alert(resumo);
 
   // Limpar o carrinho após a compra
-  localStorage.removeItem("carrinho");
+  localStorage.removeItem('carrinho');
 
   // Redirecionar para página de produtos
   setTimeout(() => {
-    window.location.href = "produtos.html";
+    window.location.href = 'produtos.html';
   }, 500);
 }
 
 // Carregar e exibir o carrinho ao abrir a página
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   exibirCarrinho();
 });

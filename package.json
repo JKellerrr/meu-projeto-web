@@ -3,9 +3,37 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build:css": "sass css/styles.scss css/styles.css --no-source-map"
+    "build:css": "sass css/styles.scss css/styles.css --no-source-map",
+    "start": "node server.js"
   },
   "devDependencies": {
+    "eslint": "^10.3.0",
     "sass": "^1.99.0"
-  }
+  },
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "axios": "^1.16.0",
+    "chokidar": "^4.0.3",
+    "detect-libc": "^2.1.2",
+    "immutable": "^5.1.5",
+    "is-extglob": "^2.1.1",
+    "is-glob": "^4.0.3",
+    "node-addon-api": "^7.1.1",
+    "picomatch": "^4.0.4",
+    "readdirp": "^4.1.2",
+    "source-map-js": "^1.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JKellerrr/meu-projeto-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/JKellerrr/meu-projeto-web/issues"
+  },
+  "homepage": "https://github.com/JKellerrr/meu-projeto-web#readme"
 }

@@ -14,7 +14,7 @@
   --muted-color: #6c757d;
 }
 
-[data-theme=light] {
+[data-theme="light"] {
   --body-bg: #ffffff;
   --body-color: #212529;
   --card-bg: #ffffff;
@@ -30,7 +30,7 @@
   --muted-color: #6c757d;
 }
 
-[data-theme=default] {
+[data-theme="default"] {
   --body-bg: #ffffff;
   --body-color: #212529;
   --card-bg: #ffffff;
@@ -46,7 +46,7 @@
   --muted-color: #6c757d;
 }
 
-[data-theme=ocean] {
+[data-theme="ocean"] {
   --body-bg: #e8f7ff;
   --body-color: #053d66;
   --card-bg: #dbeeff;
@@ -62,7 +62,7 @@
   --muted-color: #4f6f8a;
 }
 
-[data-theme=sunset] {
+[data-theme="sunset"] {
   --body-bg: #fff2e6;
   --body-color: #5a2a19;
   --card-bg: #ffe3c2;
@@ -78,7 +78,7 @@
   --muted-color: #7e5b4a;
 }
 
-[data-theme=dark] {
+[data-theme="dark"] {
   --body-bg: #121212;
   --body-color: #e9ecef;
   --card-bg: #1f1f1f;
@@ -98,7 +98,9 @@ html {
   box-sizing: border-box;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -109,21 +111,35 @@ body {
   color: var(--body-color);
   background-color: var(--body-bg);
   min-height: 100vh;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
-body, button, input, select, textarea {
+body,
+button,
+input,
+select,
+textarea {
   font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-style: normal;
   font-weight: 600;
   color: var(--body-color);
 }
 
-p, label, .form-text, small {
+p,
+label,
+.form-text,
+small {
   font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-style: normal;
   font-weight: 400;
